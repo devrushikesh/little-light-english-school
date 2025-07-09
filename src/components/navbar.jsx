@@ -31,7 +31,7 @@ const Navbar = () => {
                 <ul className="flex space-x-8">
                     <li>
                         <a 
-                            href="#about" 
+                            href="about" 
                             className="text-gray-700 hover:text-indigo-600 font-medium px-4 py-2 rounded-lg hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5"
                         >
                             About Us
@@ -39,7 +39,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <a 
-                            href="#gallery" 
+                            href="gallery" 
                             className="text-gray-700 hover:text-indigo-600 font-medium px-4 py-2 rounded-lg hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5"
                         >
                             Gallery
@@ -47,7 +47,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <a 
-                            href="#contact" 
+                            href="contact-us" 
                             className="text-gray-700 hover:text-indigo-600 font-medium px-4 py-2 rounded-lg hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5"
                         >
                             Contact Us
@@ -63,7 +63,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <a 
-                            href="#admissions" 
+                            href="admission" 
                             className="bg-indigo-600 text-white hover:bg-indigo-700 font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
                         >
                             Admissions
@@ -95,7 +95,7 @@ const Navbar = () => {
                 <ul className="flex flex-col py-4">
                     <li>
                         <a 
-                            href="#about" 
+                            href="about" 
                             className="block px-6 py-3 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 font-medium transition-colors duration-200"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -104,7 +104,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <a 
-                            href="#gallery" 
+                            href="gallery" 
                             className="block px-6 py-3 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 font-medium transition-colors duration-200"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -113,7 +113,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <a 
-                            href="#contact" 
+                            href="contact-us" 
                             className="block px-6 py-3 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 font-medium transition-colors duration-200"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -131,7 +131,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <a 
-                            href="#admissions" 
+                            href="admission" 
                             className="block px-6 py-3 bg-indigo-600 text-white hover:bg-indigo-700 font-medium transition-colors duration-200 mx-4 my-2 rounded-lg text-center"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
