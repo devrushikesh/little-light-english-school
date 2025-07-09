@@ -61,6 +61,14 @@ const Navbar = () => {
                             Academics
                         </a>
                     </li>
+                    <li>
+                        <a 
+                            href="#admissions" 
+                            className="bg-indigo-600 text-white hover:bg-indigo-700 font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                        >
+                            Admissions
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -119,6 +127,15 @@ const Navbar = () => {
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             Academics
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            href="#admissions" 
+                            className="block px-6 py-3 bg-indigo-600 text-white hover:bg-indigo-700 font-medium transition-colors duration-200 mx-4 my-2 rounded-lg text-center"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            Admissions
                         </a>
                     </li>
                 </ul>
