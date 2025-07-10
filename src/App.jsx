@@ -8,6 +8,7 @@ import AdmissionPage from './pages/Admission'
 import ContactUsPage from './pages/ContactUs'
 import GalleryPage from './pages/Galary'
 import AboutUsPage from './pages/About'
+import AcademicsPage from './pages/Academics'
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/about' element={<AboutUsPage/> } />
         <Route path='/gallery' element={<GalleryPage />} />
+        <Route path='/academics' element={<AcademicsPage/>} />
+
         <Route path='/admissions' element={<AdmissionPage />} />
         <Route path='/contact-us' element={<ContactUsPage/> } />
       </Routes>
