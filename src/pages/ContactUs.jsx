@@ -274,24 +274,32 @@ const ContactUsPage = () => {
                                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                                         Subject *
                                     </label>
-                                    <select
-                                        id="subject"
-                                        name="subject"
-                                        value={formData.subject}
-                                        onChange={handleInputChange}
-                                        className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors ${
-                                            errors.subject ? 'border-red-500 bg-red-50' : ''
-                                        }`}
-                                    >
-                                        <option value="">Select a subject</option>
-                                        <option value="admission">Admission Inquiry</option>
-                                        <option value="general">General Information</option>
-                                        <option value="curriculum">Curriculum Questions</option>
-                                        <option value="fees">Fee Structure</option>
-                                        <option value="facilities">School Facilities</option>
-                                        <option value="transport">Transportation</option>
-                                        <option value="other">Other</option>
-                                    </select>
+                                    <div className="relative">
+                                        <select
+                                            id="subject"
+                                            name="subject"
+                                            value={formData.subject}
+                                            onChange={handleInputChange}
+                                            className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors appearance-none bg-white cursor-pointer ${
+                                                errors.subject ? 'border-red-500 bg-red-50' : ''
+                                            }`}
+                                            style={{ 
+                                                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                                                backgroundPosition: 'right 0.5rem center',
+                                                backgroundRepeat: 'no-repeat',
+                                                backgroundSize: '1.5em 1.5em'
+                                            }}
+                                        >
+                                            <option value="" disabled className="text-gray-500">Select a subject</option>
+                                            <option value="admission" className="text-gray-900">Admission Inquiry</option>
+                                            <option value="general" className="text-gray-900">General Information</option>
+                                            <option value="curriculum" className="text-gray-900">Curriculum Questions</option>
+                                            <option value="fees" className="text-gray-900">Fee Structure</option>
+                                            <option value="facilities" className="text-gray-900">School Facilities</option>
+                                            <option value="transport" className="text-gray-900">Transportation</option>
+                                            <option value="other" className="text-gray-900">Other</option>
+                                        </select>
+                                    </div>
                                     {errors.subject && (
                                         <p className="mt-2 text-sm text-red-600 flex items-center">
                                             <span className="mr-1">⚠️</span>
