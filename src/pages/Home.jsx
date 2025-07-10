@@ -47,14 +47,14 @@ const HomePage = () => {
                             </div>
                         </div>
 
-                        {/* Hero Image Placeholder */}
+                        {/* Hero Image */}
                         <div className="relative">
-                            <div className="bg-gradient-to-br from-yellow-100 to-pink-100 rounded-3xl aspect-square flex items-center justify-center border-4 border-dashed border-indigo-300">
-                                <div className="text-center p-8">
-                                    <div className="text-6xl mb-4">🏫</div>
-                                    <p className="text-gray-600 font-medium">Hero Image Placeholder</p>
-                                    <p className="text-sm text-gray-500">Happy children playing & learning</p>
-                                </div>
+                            <div className="rounded-3xl overflow-hidden shadow-2xl">
+                                <img 
+                                    src="https://demolles.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+21.27.38.jpeg"
+                                    alt="Little Light A play School - Happy children learning and playing"
+                                    className="w-full h-full object-cover aspect-square"
+                                />
                             </div>
                             {/* Floating Elements */}
                             <div className="absolute -top-4 -right-4 bg-yellow-300 rounded-full p-4 animate-bounce">

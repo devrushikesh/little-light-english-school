@@ -22,8 +22,8 @@ const Footer = () => {
                             </h3>
                         </div>
                         <p className="text-gray-300 text-sm leading-relaxed">
-                            Nurturing young minds through quality education and holistic development. 
-                            Building tomorrow's leaders with strong foundations in English and life skills.
+                            Nurturing young minds through quality early childhood education and holistic development. 
+                            Building tomorrow's leaders with strong foundations in learning and life skills since 2015.
                         </p>
                         <div className="flex space-x-4">
                             {/* Social Media Links */}
@@ -50,7 +50,7 @@ const Footer = () => {
                         <h4 className="text-lg font-semibold text-white">Quick Links</h4>
                         <ul className="space-y-2">
                             <li>
-                                <a href="#about" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
+                                <a href="about" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
                                     About Us
                                 </a>
                             </li>
@@ -60,12 +60,12 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="#admissions" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
+                                <a href="admissions" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
                                     Admissions
                                 </a>
                             </li>
                             <li>
-                                <a href="#gallery" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
+                                <a href="gallery" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
                                     Gallery
                                 </a>
                             </li>
@@ -75,7 +75,7 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="#contact" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
+                                <a href="contact-us" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
                                     Contact Us
                                 </a>
                             </li>
@@ -92,9 +92,9 @@ const Footer = () => {
                                 </svg>
                                 <div>
                                     <p className="text-gray-300 text-sm">
-                                        123 Education Street<br />
-                                        Learning District<br />
-                                        City, State 12345
+                                        Little Light English School<br />
+                                        Gad Society, Near Pavtya Maruti Temple<br />
+                                        Damani Nagar, Solapur 413001
                                     </p>
                                 </div>
                             </div>
@@ -102,16 +102,16 @@ const Footer = () => {
                                 <svg className="w-5 h-5 text-indigo-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                                 </svg>
-                                <a href="tel:+1234567890" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
-                                    +1 (234) 567-8900
+                                <a href="tel:+917038057687" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
+                                    +91 70380 57687
                                 </a>
                             </div>
                             <div className="flex items-center gap-3">
                                 <svg className="w-5 h-5 text-indigo-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                                 </svg>
-                                <a href="mailto:info@lles.edu" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
-                                    info@lles.edu
+                                <a href="mailto:info@littlelightplayschool.edu" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 text-sm">
+                                    info@littlelightplayschool.edu
                                 </a>
                             </div>
                         </div>
