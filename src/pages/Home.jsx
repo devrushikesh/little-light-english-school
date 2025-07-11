@@ -58,7 +58,7 @@ const HomePage = () => {
                             <div className="rounded-3xl overflow-hidden shadow-2xl">
                                 <img 
                                     src="https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+22.00.48.jpeg"
-                       alt="Little Light A play School - Happy children learning and playing"
+                                    alt="Little Light A play School - Happy children learning and playing"
                                     className="w-full h-full object-cover aspect-square"
                                 />
                             </div>
