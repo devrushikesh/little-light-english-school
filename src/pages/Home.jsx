@@ -1,5 +1,8 @@
 
+import { useNavigate } from 'react-router-dom';
+
 const HomePage = () => {
+    const navigate = useNavigate();
     return (
         <div className="min-h-screen">
             {/* Hero Section */}
@@ -22,11 +25,14 @@ const HomePage = () => {
                             
                             {/* CTA Buttons */}
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <button className="bg-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                                <button 
+                                    onClick={() => navigate('/admissions')}
+                                    className="bg-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                >
                                     🎒 Apply for Admission
                                 </button>
                                 <button className="border-2 border-indigo-600 text-indigo-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-600 hover:text-white transition-all duration-300">
-                                    📞 Schedule Visit
+                                    📞 Call Us
                                 </button>
                             </div>
 
@@ -51,7 +57,7 @@ const HomePage = () => {
                         <div className="relative">
                             <div className="rounded-3xl overflow-hidden shadow-2xl">
                                 <img 
-                                    src="https://demolles.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+21.27.38.jpeg"
+                                    src="https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+22.00.48.jpeg"
                                     alt="Little Light A play School - Happy children learning and playing"
                                     className="w-full h-full object-cover aspect-square"
                                 />
@@ -81,7 +87,8 @@ const HomePage = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+                        {/* Row 1 - 4 cards */}
                         {/* Feature 1 */}
                         <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow duration-300">
                             <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -125,7 +132,10 @@ const HomePage = () => {
                                 Art, music, dance, and craft activities to develop creativity and motor skills.
                             </p>
                         </div>
+                    </div>
 
+                    {/* Row 2 - 3 cards centered */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 max-w-5xl mx-auto">
                         {/* Feature 5 */}
                         <div className="bg-gradient-to-br from-red-50 to-pink-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow duration-300">
                             <div className="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -147,6 +157,17 @@ const HomePage = () => {
                                 Strong foundation in English language through stories, rhymes, and interactive sessions.
                             </p>
                         </div>
+
+                        {/* Feature 7 */}
+                        <div className="bg-gradient-to-br from-violet-50 to-indigo-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow duration-300">
+                            <div className="bg-violet-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span className="text-3xl">💻</span>
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-4">E-Learning</h3>
+                            <p className="text-gray-600">
+                                Modern digital learning tools and smart classrooms to enhance the educational experience.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -163,7 +184,51 @@ const HomePage = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {/* Nursery Program */}
+                        <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <div className="flex items-center mb-6">
+                                <div className="bg-gradient-to-br from-green-100 to-emerald-100 p-4 rounded-2xl mr-4">
+                                    <span className="text-3xl">🍼</span>
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-bold text-gray-900">Nursery Program</h3>
+                                    <p className="text-gray-600">Ages 2-3 years</p>
+                                </div>
+                            </div>
+                            
+                            {/* Nursery Image Placeholder */}
+                            <div className="bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl aspect-video flex items-center justify-center border-2 border-dashed border-green-300 mb-6">
+                                <div className="text-center">
+                                    <span className="text-4xl block mb-2">👼</span>
+                                    <p className="text-gray-600 font-medium">Nursery Activities Image</p>
+                                </div>
+                            </div>
+
+                            <ul className="space-y-3 mb-6">
+                                <li className="flex items-center text-gray-700">
+                                    <span className="text-green-500 mr-3">✓</span>
+                                    Basic social interaction
+                                </li>
+                                <li className="flex items-center text-gray-700">
+                                    <span className="text-green-500 mr-3">✓</span>
+                                    Sensory play activities
+                                </li>
+                                <li className="flex items-center text-gray-700">
+                                    <span className="text-green-500 mr-3">✓</span>
+                                    Simple rhymes and songs
+                                </li>
+                                <li className="flex items-center text-gray-700">
+                                    <span className="text-green-500 mr-3">✓</span>
+                                    Basic toilet training
+                                </li>
+                            </ul>
+
+                            <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 rounded-full font-semibold hover:from-green-600 hover:to-emerald-600 transition-all duration-300">
+                                Learn More About Nursery
+                            </button>
+                        </div>
+
                         {/* LKG Program */}
                         <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <div className="flex items-center mb-6">
@@ -269,18 +334,32 @@ const HomePage = () => {
 
                     {/* Gallery Grid */}
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-                            <div key={item} className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl aspect-square flex items-center justify-center border-2 border-dashed border-yellow-300 hover:shadow-lg transition-shadow duration-300">
-                                <div className="text-center">
-                                    <span className="text-2xl block mb-1">📷</span>
-                                    <p className="text-xs text-gray-600">Photo {item}</p>
-                                </div>
+                        {[
+                            "https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+22.00.48.jpeg",
+                            "https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+22.06.02.jpeg",
+                            "https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+22.06.15.jpeg",
+                            "https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+22.08.35.jpeg",
+                            "https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+22.08.36+(1).jpeg",
+                            "https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+22.16.45.jpeg",
+                            "https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+22.35.13+(1).jpeg",
+                            "https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/WhatsApp+Image+2025-07-09+at+22.45.05.jpeg"
+                        ].map((imageUrl, index) => (
+                            <div key={index} className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 aspect-square">
+                                <img 
+                                    src={imageUrl}
+                                    alt={`Happy moment ${index + 1} - Little Light A play School children activities`}
+                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                    loading="lazy"
+                                />
                             </div>
                         ))}
                     </div>
 
                     <div className="text-center">
-                        <button className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-8 py-3 rounded-full font-semibold hover:from-yellow-600 hover:to-orange-600 transition-all duration-300">
+                        <button 
+                            onClick={() => navigate('/gallery/fun-activities')}
+                            className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-8 py-3 rounded-full font-semibold hover:from-yellow-600 hover:to-orange-600 transition-all duration-300"
+                        >
                             View Full Gallery
                         </button>
                     </div>
@@ -300,25 +379,22 @@ const HomePage = () => {
                         </p>
                         
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-4 rounded-full text-lg font-bold hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                            <button 
+                                onClick={() => navigate('/admissions')}
+                                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-4 rounded-full text-lg font-bold hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
+                            >
                                 🎒 Apply Now - Admission Open!
                             </button>
                             <button className="border-2 border-indigo-600 text-indigo-600 px-10 py-4 rounded-full text-lg font-bold hover:bg-indigo-600 hover:text-white transition-all duration-300">
-                                📞 Call: +1 (234) 567-8900
+                                📞 Call: +91 70380 57687
                             </button>
-                        </div>
-
-                        <div className="mt-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border border-green-200">
-                            <p className="text-green-800 font-semibold">
-                                🎉 Special Offer: Early Bird Discount - Save 20% on admission fees! 
-                                <span className="block text-sm font-normal mt-1">Valid until July 31st, 2025</span>
-                            </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Testimonials Section */}
+            {/* Testimonials Section - Commented out for now */}
+            {/* 
             <section className="py-16 px-4 bg-gray-50">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
@@ -333,7 +409,6 @@ const HomePage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[1, 2, 3].map((item) => (
                             <div key={item} className="bg-white rounded-2xl p-8 shadow-lg">
-                                {/* Parent Image Placeholder */}
                                 <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border-2 border-dashed border-gray-300">
                                     <span className="text-2xl">👨‍👩‍👧</span>
                                 </div>
@@ -350,6 +425,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </section>
+            */}
         </div>
     );
 }

@@ -1,0 +1,112 @@
+{
+  "events": [
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/events/event1.jpg",
+      "title": "Annual Day Celebration",
+      "description": "Children performing on stage during our annual day celebration"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/events/event2.jpg",
+      "title": "Sports Day",
+      "description": "Students participating in various sports activities"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/events/event3.jpg",
+      "title": "Science Exhibition",
+      "description": "Young scientists showcasing their creative projects"
+    }
+  ],
+  "classrooms": [
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/classrooms/classroom1.jpg",
+      "title": "Nursery Classroom",
+      "description": "Bright and colorful nursery classroom setup"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/classrooms/classroom2.jpg",
+      "title": "LKG Classroom",
+      "description": "Learning environment designed for LKG students"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/classrooms/classroom3.jpg",
+      "title": "UKG Classroom",
+      "description": "Interactive classroom space for UKG students"
+    }
+  ],
+  "sports": [
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/sports/sports1.jpg",
+      "title": "Football Practice",
+      "description": "Students enjoying football practice sessions"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/sports/sports2.jpg",
+      "title": "Dance Class",
+      "description": "Children learning dance moves in our dance studio"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/sports/sports3.jpg",
+      "title": "Playground Activities",
+      "description": "Kids having fun on our playground equipment"
+    }
+  ],
+  "fun-activities": [
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/Happy-Moments/happy+moments/WhatsApp+Image+2025-07-09+at+21.58.11.jpeg",
+      "title": "Creative Art Session",
+      "description": "Children expressing creativity through art and crafts"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/Happy-Moments/happy+moments/WhatsApp+Image+2025-07-09+at+22.00.48.jpeg",
+      "title": "Music Time",
+      "description": "Students learning musical instruments and singing"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/Happy-Moments/happy+moments/WhatsApp+Image+2025-07-09+at+22.06.15.jpeg",
+      "title": "Story Time",
+      "description": "Teacher reading interesting stories to attentive students"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/Happy-Moments/happy+moments/WhatsApp+Image+2025-07-09+at+22.08.34.jpeg",
+      "title": "Building Blocks",
+      "description": "Children developing motor skills with building activities"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/Happy-Moments/happy+moments/WhatsApp+Image+2025-07-09+at+22.08.35+(1).jpeg",
+      "title": "Group Activities",
+      "description": "Students working together in team-building exercises"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/Happy-Moments/happy+moments/WhatsApp+Image+2025-07-09+at+22.08.35.jpeg",
+      "title": "Learning Games",
+      "description": "Educational games making learning fun and interactive"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/Happy-Moments/happy+moments/WhatsApp+Image+2025-07-09+at+22.08.36.jpeg",
+      "title": "Outdoor Play",
+      "description": "Children enjoying outdoor activities and fresh air"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/Happy-Moments/happy+moments/WhatsApp+Image+2025-07-09+at+22.10.29.jpeg",
+      "title": "Happy Moments",
+      "description": "Capturing the joy and laughter of our little learners"
+    }
+  ],
+  "celebrations": [
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/celebrations/diwali1.jpg",
+      "title": "Diwali Celebration",
+      "description": "Students celebrating the festival of lights with joy"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/celebrations/holi1.jpg",
+      "title": "Holi Festival",
+      "description": "Children enjoying colors during Holi celebration"
+    },
+    {
+      "url": "https://demolles.s3.ap-south-1.amazonaws.com/gallery/celebrations/christmas1.jpg",
+      "title": "Christmas Celebration",
+      "description": "Students spreading joy during Christmas festivities"
+    }
+  ]
+}

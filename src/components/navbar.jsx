@@ -34,6 +34,15 @@ const Navbar = () => {
             {/* Right side - Navigation Menu - Desktop */}
             <div className="hidden md:flex items-center">
                 <ul className="flex items-center space-x-5">
+                    <li>
+                        <a
+                            href="/"
+                            className="block px-6 py-3 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 font-medium transition-colors duration-200"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            Home
+                        </a>
+                    </li>
                     <li className="flex items-center">
                         <a
                             href="/about"
@@ -56,7 +65,7 @@ const Navbar = () => {
 
                         {/* Desktop Dropdown */}
                         <div
-                            className={`absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-lg shadow-lg transition-all duration-200 ${isGalleryDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                            className={`absolute top-full left-0 mt-1 w-58 bg-white border border-gray-200 rounded-lg shadow-lg transition-all duration-200 ${isGalleryDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                                 }`}
                             onMouseEnter={() => setIsGalleryDropdownOpen(true)}
                             onMouseLeave={() => setIsGalleryDropdownOpen(false)}
@@ -64,30 +73,46 @@ const Navbar = () => {
                             <ul className="py-2">
                                 <li>
                                     <a
-                                        href="/gallery/images"
+                                        href="/gallery/events"
                                         className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200"
                                     >
-                                        📸 Images
+                                        🎪 Events
                                     </a>
                                 </li>
                                 <li>
                                     <a
-                                        href="/gallery/videos"
+                                        href="/gallery/classrooms"
                                         className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200"
                                     >
-                                        🎥 Videos
+                                        🏫 Classrooms
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="/gallery/sports"
+                                        className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200"
+                                    >
+                                        ⚽ Sports
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="/gallery/fun-activities"
+                                        className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200"
+                                    >
+                                        🎈 Fun Activities
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="/gallery/celebrations"
+                                        className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200"
+                                    >
+                                        � Celebrations
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                    </li>
-                    <li className="flex items-center">
-                        <a
-                            href="/academics"
-                            className="text-gray-700 hover:text-indigo-600 font-medium px-4 py-2 rounded-lg hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5 flex items-center"
-                        >
-                            Academics
-                        </a>
                     </li>
                     <li className="flex items-center">
                         <a
@@ -125,6 +150,16 @@ const Navbar = () => {
             <div className={`absolute top-full left-0 right-0 bg-white shadow-lg md:hidden transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
                 }`}>
                 <ul className="flex flex-col py-4">
+
+                    <li>
+                        <a
+                            href="/"
+                            className="block px-6 py-3 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 font-medium transition-colors duration-200"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            Home
+                        </a>
+                    </li>
                     <li>
                         <a
                             href="/about"
@@ -147,38 +182,56 @@ const Navbar = () => {
                         </button>
 
                         {/* Mobile Dropdown */}
-                        <div className={`overflow-hidden transition-all duration-300 ${isGalleryDropdownOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
+                        <div className={`overflow-hidden transition-all duration-300 ${isGalleryDropdownOpen ? 'max-h-56 opacity-100' : 'max-h-0 opacity-0'
                             }`}>
                             <ul className="bg-gray-50">
                                 <li>
                                     <a
-                                        href="/gallery/images"
+                                        href="/gallery/events"
                                         className="block px-8 py-2 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
-                                        📸 Images
+                                        🎪 Events
                                     </a>
                                 </li>
                                 <li>
                                     <a
-                                        href="/gallery/videos"
+                                        href="/gallery/classrooms"
                                         className="block px-8 py-2 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
-                                        🎥 Videos
+                                        🏫 Classrooms
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="/gallery/sports"
+                                        className="block px-8 py-2 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        ⚽ Sports
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="/gallery/fun-activities"
+                                        className="block px-8 py-2 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        🎈 Fun Activities
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="/gallery/celebrations"
+                                        className="block px-8 py-2 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        � Celebrations
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                    </li>
-                    <li>
-                        <a
-                            href="/academics"
-                            className="block px-6 py-3 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 font-medium transition-colors duration-200"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            Academics
-                        </a>
                     </li>
                     <li>
                         <a
