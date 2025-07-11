@@ -18,12 +18,12 @@ function App() {
       <Routes >
 
         <Route path='/' element={<HomePage />} />
-        <Route path='/about' element={<AboutUsPage/> } />
-        <Route path='/gallery' element={<GalleryPage />} />
-        <Route path='/academics' element={<AcademicsPage/>} />
-
+        <Route path='/about' element={<AboutUsPage />} />
+        <Route path='/gallery/:category'  element={<GalleryPage />} />
+        <Route path='/academics' element={<AcademicsPage />} />
         <Route path='/admissions' element={<AdmissionPage />} />
-        <Route path='/contact-us' element={<ContactUsPage/> } />
+        <Route path='/contact-us' element={<ContactUsPage />} />
+
       </Routes>
 
       <Footer />

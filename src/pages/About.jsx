@@ -5,7 +5,7 @@ const AboutUsPage = () => {
         {
             year: '2015',
             title: 'Foundation',
-            description: 'Little Light A play School was established with a vision to provide quality early childhood education in Solapur.',
+            description: 'Little Little English School was established to provide quality early childhood education in Solapur.',
             icon: '🏗️'
         },
         {
@@ -164,7 +164,7 @@ const AboutUsPage = () => {
                             Nurturing young minds since 2015 in the heart of Solapur. 
                             Where every child's potential shines bright like a little light! 🌟
                         </p>
-                    </div>
+                    </div>ˀ
 
                     {/* Hero Content */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -192,7 +192,7 @@ const AboutUsPage = () => {
                             </div>
                         </div>
 
-                        {/* Image Placeholder */}
+                        {/* School Building Image */}
                         <div className="relative">
                             <div className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-3xl aspect-square flex items-center justify-center border-4 border-dashed border-orange-300">
                                 <div className="text-center p-8">
@@ -325,7 +325,7 @@ const AboutUsPage = () => {
             </section>
 
             {/* Our Team */}
-            <section className="py-16 px-4">
+            {/* <section className="py-16 px-4">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -351,7 +351,7 @@ const AboutUsPage = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Facilities */}
             <section className="py-16 px-4 bg-white">

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { submitAdmissionForm } from '../firebaseUtils';
 
 const AdmissionPage = () => {
     const [formData, setFormData] = useState({
@@ -183,33 +184,65 @@ const AdmissionPage = () => {
 
         setIsSubmitting(true);
         
-        // Simulate form submission
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            alert('Admission form submitted successfully! We will contact you soon.');
-            // Reset form
-            setFormData({
-                fullName: '',
-                dateOfBirth: '',
-                fatherName: '',
-                motherName: '',
-                fatherOccupation: '',
-                motherOccupation: '',
-                fatherEducation: '',
-                motherEducation: '',
-                address: '',
-                fatherPhone: '',
-                motherPhone: '',
-                nationality: '',
-                religion: '',
-                program: '',
-                aadharFile: null,
-                studentPhoto: null
-            });
-            // Reset file inputs
-            document.getElementById('aadharFile').value = '';
-            document.getElementById('studentPhoto').value = '';
+            // Prepare form data for Firebase (excluding files)
+            const submissionData = {
+                fullName: formData.fullName,
+                dateOfBirth: formData.dateOfBirth,
+                fatherName: formData.fatherName,
+                motherName: formData.motherName,
+                fatherOccupation: formData.fatherOccupation,
+                motherOccupation: formData.motherOccupation,
+                fatherEducation: formData.fatherEducation,
+                motherEducation: formData.motherEducation,
+                address: formData.address,
+                fatherPhone: formData.fatherPhone,
+                motherPhone: formData.motherPhone,
+                nationality: formData.nationality,
+                religion: formData.religion,
+                program: formData.program
+            };
+
+            // Prepare files for upload
+            const files = {
+                aadharFile: formData.aadharFile,
+                studentPhoto: formData.studentPhoto
+            };
+
+            // Submit to Firebase
+            const result = await submitAdmissionForm(submissionData, files);
+
+            if (result.success) {
+                alert('Admission form submitted successfully! We will contact you soon. Your application ID is: ' + result.id);
+                
+                // Reset form
+                setFormData({
+                    fullName: '',
+                    dateOfBirth: '',
+                    fatherName: '',
+                    motherName: '',
+                    fatherOccupation: '',
+                    motherOccupation: '',
+                    fatherEducation: '',
+                    motherEducation: '',
+                    address: '',
+                    fatherPhone: '',
+                    motherPhone: '',
+                    nationality: '',
+                    religion: '',
+                    program: '',
+                    aadharFile: null,
+                    studentPhoto: null
+                });
+                setErrors({});
+                // Reset file inputs
+                document.getElementById('aadharFile').value = '';
+                document.getElementById('studentPhoto').value = '';
+            } else {
+                alert('Error submitting form: ' + result.error);
+            }
         } catch (error) {
+            console.error('Submission error:', error);
             alert('Something went wrong. Please try again.');
         } finally {
             setIsSubmitting(false);
@@ -865,7 +898,7 @@ const AdmissionPage = () => {
                                 <li>• We will contact you within 2-3 working days after submission</li>
                                 <li>• Please ensure all documents are clear and readable</li>
                                 <li>• Age criteria: Nursery (2-3 years), LKG (3-4 years), UKG (4-5 years)</li>
-                                <li>• For any queries, call us at +1 (234) 567-8900</li>
+                                <li>• For any queries, call us at +91 70380 57687</li>
                             </ul>
                         </div>
                     </form>
@@ -879,16 +912,16 @@ const AdmissionPage = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                         <a 
-                            href="tel:+12345678900" 
+                            href="tel:+917038057687" 
                             className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors duration-300 flex items-center justify-center"
                         >
-                            📞 Call: +1 (234) 567-8900
+                            📞 Call: +91 70380 57687
                         </a>
                         <a 
-                            href="mailto:admissions@lles.edu" 
+                            href="mailto:info@littlelightplayschool.edu" 
                             className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-300 flex items-center justify-center"
                         >
-                            ✉️ Email: admissions@lles.edu
+                            ✉️ Email: info@littlelightplayschool.edu
                         </a>
                     </div>
                 </div>
