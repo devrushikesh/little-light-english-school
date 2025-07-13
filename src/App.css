@@ -1,1 +1,56 @@
 /* App styles - now using Tailwind CSS for navbar */
+
+/* Hero section animations and effects */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-bounce {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: 100vh;
+  }
+}
+
+/* Glassmorphism effects */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+}
+
+/* Add xs breakpoint for smaller mobile devices */
+@media (min-width: 480px) {
+  .xs\:block {
+    display: block;
+  }
+}
+
+/* Gradient text effect */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #ffcc33, #ff9933);
+}

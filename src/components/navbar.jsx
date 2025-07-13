@@ -16,19 +16,22 @@ const Navbar = () => {
 
     return (
         <nav className="flex justify-between items-center px-4 py-4 md:px-8 bg-white shadow-lg sticky top-0 z-50 w-full">
-            {/* Left side - School Logo */}
-            <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-200">
-                <img
-                    src="/logo.svg"
-                    alt="Little Little English School"
-                    className="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover border-2 border-indigo-600"
-                />
-                <span className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 hidden sm:block">
-                    Little Little English School
-                </span>
-                <span className="text-lg font-bold text-gray-800 sm:hidden">
-                    LLES
-                </span>
+            {/* Left side - School Logo */} <a href="/" className="flex items-center gap-3 hover:opacity-90 transition-all duration-300 group">
+                <div className="relative">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-500 rounded-full blur opacity-30 group-hover:opacity-70 transition duration-300"></div>
+                    <div className="relative">
+                        <img
+                            src="/logo.png"
+                            alt="Little Light English School"
+                            className="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover shadow-md border-2 border-white group-hover:scale-105 transition-transform duration-300"
+                        />
+                    </div>
+                </div>
+                <div className="flex flex-col">                            <span className="text-base md:text-lg lg:text-xl font-bold transition-colors duration-300 text-gray-800 font-['Poppins',sans-serif]">
+                        Little Light English School
+                    </span>
+                    <span className="text-xs font-medium hidden md:block transition-colors duration-300 text-indigo-600 font-['Poppins',sans-serif]">Where Little Dreams Take Flight</span>
+                </div>
             </a>
 
             {/* Right side - Navigation Menu - Desktop */}

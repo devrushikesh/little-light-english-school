@@ -13,28 +13,28 @@ const GalleryPage = () => {
 
     // Gallery categories configuration
     const categories = {
-        'events': { 
-            name: 'Events', 
+        'events': {
+            name: 'Events',
             icon: '🎉',
             description: 'Special events and celebrations at our school'
         },
-        'classrooms': { 
-            name: 'Classrooms', 
+        'classrooms': {
+            name: 'Classrooms',
             icon: '🏫',
             description: 'Our bright and colorful learning spaces'
         },
-        'sports': { 
-            name: 'Sports', 
+        'sports': {
+            name: 'Sports',
             icon: '⚽',
             description: 'Physical activities and sports events'
         },
-        'fun-activities': { 
-            name: 'Fun Activities', 
+        'fun-activities': {
+            name: 'Fun Activities',
             icon: '🎨',
             description: 'Creative and recreational activities'
         },
-        'celebrations': { 
-            name: 'Celebrations', 
+        'celebrations': {
+            name: 'Celebrations',
             icon: '🎊',
             description: 'Festival celebrations and special occasions'
         }
@@ -47,34 +47,26 @@ const GalleryPage = () => {
         // Determine the current category
         const validCategory = category && categories[category] ? category : defaultCategory;
         setCurrentCategory(validCategory);
-        
+
         // If URL category is invalid, redirect to default
         if (category && !categories[category]) {
             navigate(`/gallery/${defaultCategory}`, { replace: true });
             return;
         }
-        
+
         fetchGalleryData();
     }, [category, navigate]);
 
-    // Effect to preload video thumbnails
+    // Effect to preload video thumbnails - Remove since we now have pre-generated thumbnails
     useEffect(() => {
-        const images = getCurrentCategoryImages();
-        const videoUrls = images.filter(url => isVideoUrl(url));
-        
-        // Preload thumbnails for first 3 videos to improve UX
-        videoUrls.slice(0, 3).forEach(videoUrl => {
-            if (!videoThumbnails[videoUrl]) {
-                getVideoThumbnail(videoUrl);
-            }
-        });
+        // No longer needed since thumbnails are pre-generated in the new structure
     }, [galleryData, currentCategory]);
 
     // Effect for keyboard navigation in lightbox
     useEffect(() => {
         const handleKeyPress = (e) => {
             if (!selectedImage) return;
-            
+
             switch (e.key) {
                 case 'Escape':
                     closeLightbox();
@@ -103,22 +95,21 @@ const GalleryPage = () => {
     const fetchGalleryData = async () => {
         setLoading(true);
         setError(null);
-        
+
         try {
-            // Fetch gallery.json from AWS S3
-            const response = await fetch('https://lles-galary-section-s3.s3.ap-south-1.amazonaws.com/gallery.json');
-            
+            // Fetch gallery.json from AWS S3 - Updated URL
+            const response = await fetch('https://lles-gallery-media.s3.ap-south-1.amazonaws.com/gallery.json');
+
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            
+
             const data = await response.json();
             console.log('Fetched gallery data:', data); // Debug log
             setGalleryData(data);
         } catch (err) {
             console.error('Error fetching gallery data:', err);
             setError('Failed to load gallery images. Please try again later.');
-            // Fallback data in case of error - match the JSON structure
         } finally {
             setLoading(false);
         }
@@ -126,39 +117,48 @@ const GalleryPage = () => {
 
     const getCurrentCategoryImages = () => {
         const validCategory = currentCategory || defaultCategory;
-        
+
         // Map our URL categories to the JSON keys
         const categoryKeyMap = {
             'events': 'Events',
-            'classrooms': 'Classrooms', 
+            'classrooms': 'Classrooms',
             'sports': 'Sports',
             'fun-activities': 'Fun Activities',
             'celebrations': 'Celebrations'
         };
-        
+
         const jsonKey = categoryKeyMap[validCategory] || categoryKeyMap[defaultCategory];
         const categoryData = galleryData[jsonKey] || [];
-        
+
         console.log('Current category:', validCategory);
         console.log('JSON key:', jsonKey);
         console.log('Category data:', categoryData);
         console.log('Available keys in galleryData:', Object.keys(galleryData));
-        
-        // Handle both array of URLs and array of objects
+
+        // Handle the new JSON structure with original, thumb, and videoThumbs
         if (Array.isArray(categoryData)) {
             return categoryData.map(item => {
-                // If it's a string, return as is
-                if (typeof item === 'string') {
-                    return item;
-                }
-                // If it's an object, extract the URL
                 if (typeof item === 'object' && item !== null) {
-                    return item.url || item.src || item.link || '';
+                    return {
+                        original: item.original || '',
+                        thumb: item.thumb || null,
+                        videoThumbs: item.videoThumbs || [],
+                        isVideo: isVideoUrl(item.original || '')
+                    };
                 }
-                return '';
-            }).filter(url => url); // Filter out empty URLs
+                // Fallback for old structure (if any remain)
+                if (typeof item === 'string') {
+                    return {
+                        original: item,
+                        thumb: null,
+                        videoThumbs: [],
+                        isVideo: isVideoUrl(item)
+                    };
+                }
+                return null;
+            }).filter(item => item && item.original); // Filter out null items and items without original URL
         }
-        
+
         return [];
     };
 
@@ -166,8 +166,12 @@ const GalleryPage = () => {
         navigate(`/gallery/${newCategory}`);
     };
 
-    const openLightbox = (imageUrl, index) => {
-        setSelectedImage({ url: imageUrl, index });
+    const openLightbox = (mediaItem, index) => {
+        setSelectedImage({
+            url: mediaItem.original, // Use original URL for lightbox
+            index,
+            isVideo: mediaItem.isVideo
+        });
     };
 
     const closeLightbox = () => {
@@ -176,18 +180,23 @@ const GalleryPage = () => {
 
     const navigateImage = (direction) => {
         if (!selectedImage) return;
-        
+
         const images = getCurrentCategoryImages();
         const currentIndex = selectedImage.index;
         let newIndex;
-        
+
         if (direction === 'next') {
             newIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
         } else {
             newIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
         }
-        
-        setSelectedImage({ url: images[newIndex], index: newIndex });
+
+        const newMediaItem = images[newIndex];
+        setSelectedImage({
+            url: newMediaItem.original,
+            index: newIndex,
+            isVideo: newMediaItem.isVideo
+        });
     };
 
     // Function to generate video thumbnail
@@ -196,21 +205,21 @@ const GalleryPage = () => {
             const video = document.createElement('video');
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-            
+
             video.crossOrigin = 'anonymous';
             video.muted = true;
             video.playsInline = true;
             video.preload = 'metadata';
-            
+
             video.onloadedmetadata = () => {
                 canvas.width = video.videoWidth;
                 canvas.height = video.videoHeight;
-                
+
                 // Seek to 3 seconds or 25% of video duration for better thumbnail
                 const seekTime = Math.min(3, video.duration * 0.25);
                 video.currentTime = seekTime;
             };
-            
+
             video.onseeked = () => {
                 try {
                     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -227,12 +236,12 @@ const GalleryPage = () => {
                     resolve(null);
                 }
             };
-            
+
             video.onerror = () => {
                 console.error('Video load error for:', videoUrl);
                 resolve(null);
             };
-            
+
             video.src = videoUrl;
             video.load();
         });
@@ -244,7 +253,7 @@ const GalleryPage = () => {
         if (videoThumbnails[videoUrl]) {
             return videoThumbnails[videoUrl];
         }
-        
+
         // Generate new thumbnail
         const thumbnail = await generateVideoThumbnail(videoUrl);
         if (thumbnail) {
@@ -262,18 +271,12 @@ const GalleryPage = () => {
         return videoExtensions.some(ext => url.toLowerCase().includes(ext));
     };
 
-    // Function to handle video thumbnail loading
-    const handleVideoClick = async (videoUrl, index, e) => {
+    // Function to handle media click (updated for new structure)
+    const handleMediaClick = (mediaItem, index, e) => {
         e.preventDefault();
         e.stopPropagation();
-        
-        // Generate thumbnail if not exists
-        if (!videoThumbnails[videoUrl]) {
-            const thumbnail = await getVideoThumbnail(videoUrl);
-            console.log('Generated thumbnail for:', videoUrl, thumbnail);
-        }
-        
-        openLightbox(videoUrl, index);
+
+        openLightbox(mediaItem, index);
     };
 
     const currentCategoryInfo = categories[currentCategory] || categories[defaultCategory];
@@ -300,11 +303,10 @@ const GalleryPage = () => {
                             <button
                                 key={categoryKey}
                                 onClick={() => handleCategoryChange(categoryKey)}
-                                className={`flex items-center px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                                    currentCategory === categoryKey
-                                        ? 'bg-indigo-600 text-white shadow-lg scale-105'
-                                        : 'bg-white text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 shadow-md hover:shadow-lg'
-                                }`}
+                                className={`flex items-center px-6 py-3 rounded-full font-semibold transition-all duration-300 ${currentCategory === categoryKey
+                                    ? 'bg-indigo-600 text-white shadow-lg scale-105'
+                                    : 'bg-white text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 shadow-md hover:shadow-lg'
+                                    }`}
                             >
                                 <span className="mr-2">{categoryInfo.icon}</span>
                                 {categoryInfo.name}
@@ -342,53 +344,47 @@ const GalleryPage = () => {
                         <>
                             {images.length > 0 ? (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                                    {images.map((imageUrl, index) => (
+                                    {images.map((mediaItem, index) => (
+
                                         <div
                                             key={index}
                                             className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-105"
-                                            onClick={() => isVideoUrl(imageUrl) ? handleVideoClick(imageUrl, index, event) : openLightbox(imageUrl, index)}
+                                            onClick={() => handleMediaClick(mediaItem, index, event)}
                                         >
                                             <div className="aspect-square overflow-hidden relative">
-                                                {isVideoUrl(imageUrl) ? (
+                                                {mediaItem.isVideo ? (
                                                     <>
                                                         {/* Video Thumbnail */}
-                                                        {videoThumbnails[imageUrl] ? (
+                                                        {mediaItem.videoThumbs && mediaItem.videoThumbs.length > 0 ? (
                                                             <img
-                                                                src={videoThumbnails[imageUrl]}
+                                                                src={mediaItem.videoThumbs[0]}
                                                                 alt={`${currentCategoryInfo.name} video ${index + 1}`}
                                                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                                                 loading="lazy"
                                                             />
                                                         ) : (
-                                                            <div 
-                                                                className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center"
-                                                                onMouseEnter={() => getVideoThumbnail(imageUrl)}
-                                                            >
+                                                            <div className="w-full h-full bg-black from-gray-300 to-gray-400 flex items-center justify-center">
                                                                 <div className="text-center">
                                                                     <svg className="w-16 h-16 text-gray-600 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
-                                                                        <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"/>
+                                                                        <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z" />
                                                                     </svg>
-                                                                    <p className="text-xs text-gray-600">Loading...</p>
+                                                                    <p className="text-xs text-gray-600">Video</p>
                                                                 </div>
                                                             </div>
                                                         )}
-                                                        
+
                                                         {/* Video Play Icon Overlay */}
-                                                        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-50 transition-all duration-300">
+                                                        <div className="absolute inset-0 flex items-center justify-center  bg-opacity-30 group-hover:bg-opacity-50 transition-all duration-300">
                                                             <div className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 shadow-lg transform group-hover:scale-110 transition-all duration-300">
                                                                 <svg className="w-8 h-8 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
-                                                                    <path d="M8 5v14l11-7z"/>
+                                                                    <path d="M8 5v14l11-7z" />
                                                                 </svg>
                                                             </div>
-                                                        </div>
-                                                        {/* Video Duration Badge */}
-                                                        <div className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">
-                                                            VIDEO
                                                         </div>
                                                     </>
                                                 ) : (
                                                     <img
-                                                        src={imageUrl}
+                                                        src={mediaItem.original}
                                                         alt={`${currentCategoryInfo.name} image ${index + 1}`}
                                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                                         loading="lazy"
@@ -425,7 +421,7 @@ const GalleryPage = () => {
                 <section className="py-8 px-4 bg-white">
                     <div className="max-w-7xl mx-auto text-center">
                         <p className="text-gray-600">
-                            Showing <span className="font-semibold text-indigo-600">{images.length}</span> media files 
+                            Showing <span className="font-semibold text-indigo-600">{images.length}</span> media files
                             in <span className="font-semibold text-indigo-600">{currentCategoryInfo.name}</span> category
                         </p>
                     </div>
@@ -473,7 +469,7 @@ const GalleryPage = () => {
 
                         {/* Media Container */}
                         <div className="relative w-full h-full flex items-center justify-center p-16">
-                            {isVideoUrl(selectedImage.url) ? (
+                            {selectedImage.isVideo ? (
                                 <video
                                     src={selectedImage.url}
                                     className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
@@ -481,7 +477,7 @@ const GalleryPage = () => {
                                     autoPlay
                                     preload="metadata"
                                     playsInline
-                                    style={{ 
+                                    style={{
                                         backgroundColor: '#1a1a1a',
                                         minHeight: '300px',
                                         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8)'
@@ -509,17 +505,17 @@ const GalleryPage = () => {
                                 )}
                                 <span className="text-gray-300">•</span>
                                 <span className="capitalize">
-                                    {isVideoUrl(selectedImage.url) ? (
+                                    {selectedImage.isVideo ? (
                                         <span className="flex items-center">
                                             <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M8 5v14l11-7z"/>
+                                                <path d="M8 5v14l11-7z" />
                                             </svg>
                                             Video
                                         </span>
                                     ) : (
                                         <span className="flex items-center">
                                             <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                                                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                                             </svg>
                                             Image
                                         </span>

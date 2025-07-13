@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "little-little-english-school",
+    "staging": "little-little-english-school"
+  },
+  "targets": {},
+  "etags": {}
+}
