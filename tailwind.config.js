@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./index.html",                 // Vite entry point
@@ -8,7 +9,19 @@ module.exports = {
     "./src/pages/**/*.{js,jsx,ts,tsx}",      // Explicit pages folder
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        'float': 'float 4s ease-in-out infinite',
+        'wiggle': 'wiggle 3s ease-in-out infinite',
+        'pop': 'pop 0.5s ease-out',
+        'fadeIn': 'fadeIn 1s ease-in',
+        'slideInUp': 'slideInUp 0.6s ease-out',
+        'bounce': 'bounce 1s infinite',
+        'bounce-slow': 'bounce-slow 3s infinite',
+        'jump': 'jump 1s infinite',
+        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+    },
   },
   plugins: [],
   safelist: [
